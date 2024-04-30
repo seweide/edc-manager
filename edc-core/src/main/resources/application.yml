@@ -1,0 +1,108 @@
+net:
+  liangyihui:
+    edc:
+      redis:
+        url:
+          redis://127.0.0.1:6379
+        database:
+          0
+      login:
+        expire-minutes: 720
+      db-save:
+        max-batch-size: 1000
+      address: https://demodmp.liangyihui.net/backend
+      pass-url:
+        - /test/*
+        - /WeChat/patient
+        - /WeChat/patient/update
+        - /common/chat-sub-callback
+        - /common/hospital
+        - /common/dept
+        - /common/work-chat-callback
+        - /common/disease
+        - /common/save-yesterday-log
+        - /file/upload
+        - /common/city
+        - /label/*/page
+        - /label/*/create
+        - /label/*/group-page
+        - /label/work-chat/label-user
+    default-work-chat-id: 2
+    app:
+      url: http://demoapi.liangyihui.net
+pagehelper:
+  reasonable: true
+server:
+  port: 8080
+  servlet:
+    context-path: /backend
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://demodb.liangyihui.net:3306/patient_manager_db_prod?character_set_server=utf8mb4&amp&zeroDateTimeBehavior=CONVERT_TO_NULL&amp&character_set_connection=utf8mb4&character_set_results=utf8mb4
+    url: jdbc:mysql://demodb.liangyihui.net:3306/patient_manager_db_prod?character_set_server=utf8mb4&zeroDateTimeBehavior=CONVERT_TO_NULL&character_set_connection=utf8mb4&character_set_results=utf8mb4
+    username: root
+    password: 393ZiccUiUi
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      connection-init-sql: SET NAMES utf8mb4 COLLATE UTF8MB4_UNICODE_CI
+  messages:
+    basename: i18n/message
+    encoding: UTF-8
+  application:
+    name: lyh_patient_manager
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,env,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+qiniu:
+  bucket: user-admin
+  accessKey: Z1duDx8sSPIJQN3IO5Sq8H4lb-07_N7rrlRMN5jv
+  secretKey: UXzve7PDoHU6OOUuLHV-ySgLZNebm07LWXkmH140
+  domain: https://uastatic.liangyihui.net/
+  portrait:
+    url: http://7xr5oh.com2.z0.glb.qiniucdn.com/
+
+storage:
+  path: /data/upload
+  type: qiniu
+  tmppath: /tmp/path/upload
+
+schedule.enable: true
+
+
+
+aliyuncs.sms.accessKeyId: xxx
+aliyuncs.sms.accessSecret: xxx
+patient.live.address: https://patient.liangyihui.net/patient/#/live/
+patient.document.address: https://patient.liangyihui.net/wx/patientList/index.html?docId=
+miniprogram.app.id: wx0b55e1a50fca1278
+
+env.mode: dev
+
+#mybatis-plus.configuration.log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
+
